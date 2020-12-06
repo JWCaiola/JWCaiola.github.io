@@ -1,0 +1,54 @@
+<html>
+
+  <head>
+    <script src="TownGenerator.js" defer=""></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body style="background-color:#F0F0F0">
+    <div class="whole">
+      <div class="container">
+          <div class="mission">
+          <b style="font-size: 12px">Generating a Town</b>
+          <p>To use this generator, simply press the Generate button! If you'd like smaller or larger amounts of Districts, simply specify where you would like to generate a Village, Town, or City!</p>
+          <p><b style="font-size:12px">About</b></p>
+          <p>This generator was heavily inspired by two systems, Flesh of the Tarrasque and Bones of the Tarrasque, both of which were created by  Reddit user u/SidecarStories. If you have not seen these systems before, I highly recommend looking into them as they can be an invaluable resource for world building in your games. You will find that the 'Districts' and 'Area Elements' create somewhat similar results to those systems; however, this generator is in no way meant to be a replacement for either of them, but rather a format that utilizes certain elements of them.</p>
+          <p>The information in the first section is displayed in a way that allows it to be interpretted in creatives ways. For example, the order of District Points of Interests could indicate the chronological order in which they were built, or they could represent the distance between each item or maybe even the degree to which they prioritize that particular POI. The order of the Districts could be interpretted in similar ways.</p>
+          <p>While the main goal is to provide a random source of information for a village, town, or city, the hope is that the way the information is presented also allows you to draw more conclusions when creating your location.</p>
+          <p>This system will likely continue to be updated based on feedback. If you would like to provide that, you can contact u/WalkerDontRunner on Reddit.</p>
+          <p><b>Current Version:</b> 3.1.1 -- <b>Last Updated:</b> 12/06/2020</p>
+        </div>
+      </div>
+      <form class="container" style="font-family: Arial, sans-serif">
+        <input type="radio" id="village" name="location" value="village">
+        <label for="village">Village</label><br>
+        <input type="radio" id="town" name="location" value="town">
+        <label for="town">Town</label><br>
+        <input type="radio" id="city" name="location" value="city">
+        <label for="city">City</label>
+      </form>
+      <div class="container">
+        <button type="button" class="button" id="Generator">Generate</button>
+      </div>
+      <br>
+      <br>
+      <div id="kingdomMain"></div>
+      <br>
+      <br>
+      <div id="districtsMain"></div>
+      <br>
+      <br>
+      <div id="merchantsMain"></div>
+      <br>
+      <br>
+      <div id="researchMain"></div>
+      <br>
+      <br>
+      <div id="castersMain"></div>
+      <br>
+      <br>
+      <div id="listMain"></div>
+    </div>
+</body>
+
+<div class="container"></div>
