@@ -668,7 +668,6 @@ const SortByDesc = (a, b) => {
 */
 const AddItem = (arr, customizationArr, desc) => {
   let temp = customizationArr[Math.floor(Math.random() * customizationArr.length)];
-  console.log(temp);
   if(desc == 'Beliefs') {
     temp =`${temp} ${beliefsBArray[Math.floor(Math.random() * beliefsBArray.length)]}`;
   }
@@ -1082,7 +1081,6 @@ const RandomizeCasterList = (inputList, qual, halfCaster, casterLevel) => {
     }
   }
   let output = [outputList, casterLvl];
-  console.log(casterLvl);
   return output;
 };
 const RandomizeScrollList = (inputList, qtys) => {
@@ -1212,7 +1210,6 @@ const SwitchRes = (desc) => {
   HTML writing
 */
 const AddDivUsingArray = (id, output, title, casterLvl) => {
-  console.log(casterLvl);
   let container = document.querySelector('#' + id + 'Container');
   let divHeader = document.createElement('div');
   divHeader.classList.add('header');
