@@ -1067,18 +1067,29 @@ const RandomizeCasterList = (inputList, qual, halfCaster, casterLevel) => {
     qtys = arrCasterLevel[casterLvl];
   }
   for (let k = 0; k <= 9; k++){
+    let subhead = '';
+    let spellList = [];
     if(k > 0) {
-      outputList.push(`<br><b>Level ${k}</b>`);
+      subhead =`<b>Level ${k}</b>`;
     } else {
-      outputList.push(`<b>Cantrips</b>`);
+      subhead = `<b>Cantrips</b>`;
     }
     copySpellList = inputList[k].slice(0);
+    let spellCounter = 0;
     for (let l = 0, m = copySpellList.length; l < qtys[k] && l <= m; l++) {
       // if (subclass){}; // Needs content
       let rndm = Math.floor(Math.random() * copySpellList.length);
       spell = copySpellList.splice(rndm,1)[0];
-      if(spell){outputList.push(`${spell.name}`);}
+      if(spell){
+        spellList.push(`${spell.name}<br>`);
+      }
     }
+    if (spellList.length){
+      spellList = spellList.join('');
+      outputList.push(subhead);
+      outputList.push(spellList);
+    }
+
   }
   let output = [outputList, casterLvl];
   return output;
@@ -1087,10 +1098,12 @@ const RandomizeScrollList = (inputList, qtys) => {
   outputList = [];
   if (!qtys) {qtys = scrollsAverage;}
   for (let k = 0; k < inputList.length; k++){
+    let spellList = [];
+    let subhead = '';
     if(k > 0) {
-      outputList.push(`<br><b>Level ${k} Scrolls:</b>`);
+      subhead = `<br><b>Level ${k} Scrolls:</b>`;
     } else {
-      outputList.push(`<b>Cantrip Scrolls:</b>`);
+      subhead = `<b>Cantrip Scrolls:</b>`;
     }
     copySpellList = inputList[k].slice(0);
     for (let l = 0, m = copySpellList.length; l < qtys[k] && l <= m; l++) {
@@ -1108,8 +1121,13 @@ const RandomizeScrollList = (inputList, qtys) => {
         }
         classText = classText.join(' / ');
         classText = `<b style="font-size:8px">${classText}</b>`;
-        outputList.push(`${spell.name} <i>(${spell.school})</i> ${classText}`);
+        spellList.push(`${spell.name} <i>(${spell.school})</i> ${classText}`);
       }
+    }
+    if (spellList.length) {
+      spellList = spellList.join('<br>');
+      outputList.push(subhead);
+      outputList.push(spellList);
     }
   }
   return outputList;
