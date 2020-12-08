@@ -1180,6 +1180,7 @@ const SwitchCast = (desc) => {
         shopName = `${desc} (${count}) (${school})`;
       }
       half = false;
+      break;
     case 'Ranger':
       half = 'Ranger';
       break;
