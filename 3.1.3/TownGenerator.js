@@ -79,10 +79,10 @@ const qualityNames = [
   'Awful', 'Poor', 'Average', 'Good', 'Best'
 ];
 const shopsArray = [
-  "General Store", "Alchemist", "Herbalist", "Healer", "Blacksmith (Armorer)", "Blacksmith (Weapons)", "Blacksmith (Tools)", "Carpenter (Boats)", "Carpenter (Buildings)", "Carpenter (Wagons)", "Clothing (Common)", "Clothing (Fine)", "Enchanter", "Glassblower", "Leatherworks (Armor)", "Leatherworks (Saddlery)", "Stables", "Exotic Goods (Textile)", "Jeweler", "Fletcher", "Adventuring Store", "Temple (Store)"
+  "General Store", "Alchemist", "Herbalist", "Healer", "Blacksmith (Armorer)", "Blacksmith (Weapons)", "Blacksmith (Tools)", "Carpenter (Boats)", "Carpenter (Buildings)", "Carpenter (Wagons)", "Clothing (Common)", "Clothing (Fine)", "Enchanter", "Glassblower", "Leatherworks (Armor)", "Leatherworks (Saddlery)", "Stables", "Exotic Goods (Textile)", "Jeweler", "Fletcher", "Adventuring Store", "Temple (Store)", "Scribe", "Mapmaker", "Mason", "Baker", "Farmer"
 ];
 const tavernArr = [
-  "Pub", "Brewery", "Dive Bar", "Private Bar", "Winery"
+  "Pub", "Brewery", "Dive Bar", "Winery","Quiet, low-key bar","Raucous dive","Thieves’ guild hangout","Gathering place for a secret society","Upper-class dining club","Gambling den","Caters to specific race or guild", "Members-only club","Brothel"
 ];
 const schoolNameArr = [
   'Abjuration', 'Divination', 'Conjuration', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'
@@ -794,7 +794,6 @@ const SubdistrictArgBuilder = (input) => {
   if (re.test(poiArrayCopy[input].name)) {
     poiArrayCopy.splice(input,1);
   }
-
   return args;
 };
 const SubdistrictDfltArgBuilder = (input) => {
@@ -810,6 +809,11 @@ const SubdistrictDfltArgBuilder = (input) => {
   return args;
 };
 const CreateSubdistrict = ([type, desc, cID]) => {
+  if (type == 'Caster') {
+    if (Math.floor(Math.random()*2) != 1){
+      return null;
+    }
+  }
   let newObj = new TownElement(
     type, desc, RandDirection(), RandQuality(), id, dID, cID
   );
@@ -827,12 +831,12 @@ const BuildDistrict = () => {
   }
   for (let a = 0, b = defaultPOIArray.length; a < b; a++){
     let item = CreateSubdistrict(SubdistrictDfltArgBuilder(a));
-    districtObjects.push(item);
+    if (item) districtObjects.push(item);
   }
   let j = index.length;
   for (let i = 0; i < j; i++){
     let item = CreateSubdistrict(SubdistrictArgBuilder(index[i]));
-    districtObjects.push(item);
+    if (item) districtObjects.push(item);
   }
   dID++;
   return districtObjects;
