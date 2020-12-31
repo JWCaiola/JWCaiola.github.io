@@ -44,6 +44,8 @@ let itemForPush;
 let tag;
 let arrEle;
 let quality;
+let casterLvl;
+let count;
 /*
   Datasets
 */
@@ -1095,7 +1097,7 @@ const RandomizeCasterList = (inputList, qual, halfCaster, casterLevel) => {
     }
 
   }
-  let output = [outputList, casterLvl];
+  let output = [outputList, casterLvl, copySpellList];
   return output;
 };
 const RandomizeScrollList = (inputList, qtys) => {
@@ -1177,6 +1179,7 @@ const BuildTown = (category) => {
 };
 const SwitchCast = (desc) => {
   let half;
+  shopName = `${desc}`;
   switch (desc) {
     case 'Wizard':
       if (Math.floor(Math.random() * 4) < 3) {
@@ -1358,8 +1361,52 @@ const Execute = () => {
   LabelBlankContainer('researchContainer','researchMain');
   LabelBlankContainer('castersContainer','castersMain');
 };
+const ExecuteCaster = () => {
+  let overrideClass = 'Druid';
+  let overrideQual = 'Best';
+  let div_casterGenerateMain = document.querySelector('#casterGenerateMain');
+  let div_casterGenerateMain_child = document.createElement('div');
+  let div_casterGenerateMain_childBox = document.createElement('div');
+  div_casterGenerateMain.innerHTML = '';
+  div_casterGenerateMain_childBox.classList.add('box');
+  div_casterGenerateMain_child.classList.add('container');
+  let div_casterGenerateMain_header = document.createElement('div');
+  div_casterGenerateMain_header.classList.add('sectionHeader');
+  div_casterGenerateMain_childBox.innerHTML = RandomizeCasterList(BuildSpellListWithObjs(overrideClass),overrideQual)[0].join('<br>');
+  div_casterGenerateMain_child.appendChild(div_casterGenerateMain_childBox);
+  div_casterGenerateMain.appendChild(div_casterGenerateMain_child);
+};
+const ExecuteCasterTest = () => {
+  divArrInv = [];
+  divArrResearch = [];
+  divArrCaster = [];
+  id = 1;
+  dID = 1;
+  count = 1;
+  // desc = 'Wizard';
+  quality = 'Average';
+  AddSectionHTML('casters', 'Casters');
+  let inp = document.querySelectorAll('input');
+  let size;
+  for (let i = 0, j = inp.length; i < j; i++) {
+    if (document.querySelectorAll('input')[i].checked) {
+      quality = inp[i].value;
+    }
+  }
+  let classOption = document.querySelector('#classOption');
+  desc = classOption.value;
+
+  // desc = 'Wizard';
+  BuildSpellListWithObjs(desc);
+  let output = SwitchCast(desc);
+  AddDivUsingArray('casters',output[0], shopName, output[1]);
+};
 /*
   Listener for button click
 */
 const GenerateButton = document.querySelector('#Generator');
+const CasterButton = document.querySelector('#Caster');
+const CasterTestButton = document.querySelector('#CasterTest');
 if (GenerateButton){GenerateButton.addEventListener('click', Execute);}
+if (CasterButton){CasterButton.addEventListener('click', ExecuteCaster);}
+if (CasterTestButton){CasterTestButton.addEventListener('click', ExecuteCasterTest);}
