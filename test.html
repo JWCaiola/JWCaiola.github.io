@@ -1,0 +1,50 @@
+<html>
+
+  <head>
+    <script src="TownGenerator.js" defer=""></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body style="background-color:#F0F0F0">
+    <div class="whole">
+      <div class="container">
+      </div>
+      <form class="container" style="font-family: Arial, sans-serif">
+        <input type="radio" id="Awful" name="location" value="Awful">
+        <label for="village">Awful</label><br>
+        <input type="radio" id="Poor" name="location" value="Poor">
+        <label for="town">Poor</label><br>
+        <input type="radio" id="Average" name="location" value="Average">
+        <label for="city">Average</label>
+        <input type="radio" id="Good" name="location" value="Good">
+        <label for="city">Good</label>
+        <input type="radio" id="Best" name="location" value="Best">
+        <label for="city">Best</label>
+      </form>
+      <div class="container">
+        <label for="cars">Class:&nbsp;</label>
+        <select name="classOption" id="classOption" class="container">
+          <option value="Bard">Bard</option>
+          <option value="Cleric">Cleric</option>
+          <option value="Druid">Druid</option>
+          <option value="Paladin">Paladin</option>
+          <option value="Ranger">Ranger</option>
+          <option value="Sorcerer">Sorcerer</option>
+          <option value="Warlock">Warlock</option>
+          <option value="Wizard">Wizard</option>
+        </select>
+      </div>
+      <br>
+
+      <div class="container">
+        <button type="button" class="button" id="CasterTest">Generate</button>
+      </div>
+      <br>
+      <br>
+      <div id="castersMain"></div>
+      <br>
+      <div id="casterGenerateMain"></div>
+    </div>
+</body>
+
+<div class="container"></div>
